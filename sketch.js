@@ -16,7 +16,7 @@ let classifier;
 let label = "listening";
 
 // Teachable Machine model URL:
-let soundModelURL = 'https://10425216.github.io/soundcl-bird//model.json';
+let soundModelURL = 'https://10425216.github.io/soundcl-bird/model.json';
 
 
 function preload() {
@@ -28,8 +28,9 @@ function setup() {
   createCanvas(320, 240);
   // Start classifying
   // The sound model will continuously listen to the microphone
-  ThunkableWebviewerExtension.postMessage("ready")
+  ThunkableWebviewerExtension.postMessage("ready");
   classifier.classify(gotResult);
+  
 }
 
 function draw() {
@@ -52,4 +53,5 @@ function gotResult(error, results) {
   // console.log(results[0]);
   label = results[0].label;
   ThunkableWebviewerExtension.postMessage(label);
+
 }
